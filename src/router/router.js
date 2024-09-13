@@ -1,8 +1,7 @@
 const router = require("express").Router()
+const controus = require('../controll/controll')
 
-router.get("/",(req,res)=>{
-    res.send("123")
-})
+router.get("/", controus.get)
 
 module.exports={
     router
