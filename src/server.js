@@ -1,9 +1,11 @@
 const express = require("express")
 const { router } = require("./router/router")
-const mongodb = require("./database/db")
+const db = require("./database/index")
 const app = express()
+app.use(express.urlencoded({extended:true}))
 
-mongodb.conect()
+db.conect()
+
 
 app.get("/",router)
 

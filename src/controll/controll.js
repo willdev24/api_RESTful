@@ -1,5 +1,14 @@
+const { model } = require("mongoose")
+const get = async (req,res)=>{
+  
+const dados = await new model({
+nome:"willy",
+idade:50,
 
-const get = (req,res)=>{
+})
+
+dados.save()
+
     res.send("123")
 }
 
