@@ -1,6 +1,6 @@
 const { query } = require("express")
 const { model } = require("../model/model")
-
+const products = require('../model/model')
 
 
 const get = async (req,res)=>{
@@ -30,16 +30,14 @@ const post = async (req,res)=>{
 const put = async (req,res)=>{
 const {id}= req.params
 
+const ad= await products.model.findOne({_id : id})
 
-const alterarProd = await model.findOne({_id:id})
+const atual = await ad.updateOne(req.body) //atualizo o corpo completo do objto
 
-console.log(alterarProd)
-await alterarProd.updateOne(req.body) //atualizo o corpo completo do objto
-
-
-res.send("alterado")
+res.status(202).send(ad)
 
 };
+
 
 const delet = async (req,res)=>{
 

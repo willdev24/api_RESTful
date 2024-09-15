@@ -10,7 +10,7 @@ db.conect()
 
 app.get("/",router)
 app.post("/",router)
-app.put("/", router)
+app.put("/:id?", router)
 
 
 const port = process.env.PORT || 8080
