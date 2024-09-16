@@ -40,7 +40,12 @@ res.status(202).send(ad)
 
 
 const delet = async (req,res)=>{
+    const {id}= req.params
 
+    const apagar = products.model.deleteOne({_id:id})
+
+    res.status(202).send("ok")
+    
 }
 
 module.exports ={
