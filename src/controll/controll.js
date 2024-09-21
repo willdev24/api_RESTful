@@ -42,8 +42,9 @@ res.status(202).send(ad)
 const delet = async (req,res)=>{
     const {id}= req.params
 
-    const apagar = products.model.deleteOne({_id:id})
-
+    
+    const apagar = await products.model.deleteOne({_id:id})
+    console.log(apagar)
     res.status(202).send("ok")
     
 }
