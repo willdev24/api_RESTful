@@ -5,7 +5,10 @@ const products = require('../model/model')
 
 const get = async (req,res)=>{
 
-    const listar = await model.find()
+    const {id} = req.params
+    const obj = id ? {_id:id}:null;
+
+    const listar = await model.find(obj)
 
     res.send(
         listar
@@ -27,14 +30,18 @@ const post = async (req,res)=>{
     dados.save()    
 };
 
+
 const put = async (req,res)=>{
 const {id}= req.params
 
-const ad= await products.model.findOne({_id : id})
+const uppdat = await products.model.findOneAndUpdate({_id:id},req.body, {new:true}) //usando esse metodo vc manda a atualizaçao pro banco de dados 
+                                                                                      // e ele retorna a atualizaçao e ai sim processa o resto do codgo
 
+//--- usando esse metodo abaixo, ele atualiza o banco de dados mas nao retorna as informçoes ja atualisadas 
+/*const ad= await products.model.findOne({_id : id})
 const atual = await ad.updateOne(req.body) //atualizo o corpo completo do objto
-
-res.status(202).send(ad)
+*/
+res.status(202).send(uppdat)
 
 };
 
