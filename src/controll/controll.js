@@ -25,7 +25,7 @@ const post = async (req,res)=>{
     
     })
     
-    console.log(dados)
+
     res.send("cadastro realizado")
     dados.save()    
 };
@@ -35,7 +35,7 @@ const put = async (req,res)=>{
 const {id}= req.params
 
 const uppdat = await products.model.findOneAndUpdate({_id:id},req.body, {new:true}) //usando esse metodo vc manda a atualizaçao pro banco de dados 
-                                                                                      // e ele retorna a atualizaçao e ai sim processa o resto do codgo
+                                                                                    // e ele retorna a atualizaçao e ai sim processa o resto do codgo
 
 //--- usando esse metodo abaixo, ele atualiza o banco de dados mas nao retorna as informçoes ja atualisadas 
 /*const ad= await products.model.findOne({_id : id})
@@ -51,7 +51,6 @@ const delet = async (req,res)=>{
 
     
     const apagar = await products.model.deleteOne({_id:id})
-    console.log(apagar)
     res.status(202).send("ok")
     
 }
