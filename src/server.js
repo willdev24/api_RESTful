@@ -18,18 +18,19 @@ const allowedOrigens = [
 ]
 
 app.use(cors({
-    origin: async function(origin, callback){
+    origin:async function(origin, callback){
         let allowed = true
           if(!origin){ allowed = true}    //se nao vier nem uma informaçao de origem: como no caso dos mobaios. eu tenho que deixar truee
        
        if(await !allowedOrigens.includes(origin)){ // caso a origen nao esteja cadastrado dentro do array allowedorigens, sera bloqueada
         allowed = false
        }
-       console.log(origin)
+     //  console.log(origin)
           callback(null, allowed)
 
     }
-}))
+
+        }))
 
 app.get("/:id?",router)
 app.post("/",router)
