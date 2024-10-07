@@ -26,7 +26,7 @@ app.use(cors({
 
 origin: function(origin, callback){
 
-if(allowedOrigens.indexOf(origin !== -1 )){
+if(allowedOrigens.indexOf(origin !== -1 || !origin)){
 
   callback(null, true )
 
