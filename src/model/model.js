@@ -1,13 +1,12 @@
-const mongoose = require("mongoose")
+const mongoose = require('mongoose')
 
-const schema = new mongoose.Schema({
+const shema =  mongoose.Schema({
     nome:String,
     idade:Number,
 })
 
-const model = new mongoose.model("cadastros",schema)
+const model = mongoose.model("cadastros",shema)
 
-
-module.exports={
+module.exports ={ 
     model
 }
