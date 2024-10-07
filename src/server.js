@@ -21,8 +21,8 @@ const allowedOrigens = [
 'http://127.0.0.1:5500',
 'http://google.com.br',
 ]
-
-app.use(cors({
+//forma dinamica
+/*app.use(cors({
 
 origin: function(origin, callback){
 
@@ -34,10 +34,29 @@ if(allowedOrigens.indexOf(origin !== -1 || !origin)){
   callback( new Error('erro ao tencar linkar serv'))
 }
 
-
 }
 
 }))
+*/
+
+app.use(cors(function(req, callback){
+
+let corsOptions;
+
+if(allowedOrigens.indexOf(req.header('origin')) !== -1 ){
+
+corsOptions= {origin:true}
+}else{
+  corsOptions = {origin: false}
+
+}
+
+callback(null, corsOptions)
+}))
+
+
+
+
 
 app.get("/:id?",router)
 app.post("/",router)
