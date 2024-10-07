@@ -10,27 +10,34 @@ db.conect()
 
 
 //habilita
-//app.use(cors()) // dessa forma fica liberado para todos as requests : publico
+/*app.use(cors({
+
+  origin: 'http://127.0.0.1:5500',
+
+})) // dessa forma fica liberado para todos as requests : publico
+*/
 
 const allowedOrigens = [
 'http://127.0.0.1:5500',
-'http://127.0.0.1:5502/',
+'http://google.com.br',
 ]
 
 app.use(cors({
-    origin:async function(origin, callback){
-        let allowed = true
-          if(!origin){ allowed = true}    //se nao vier nem uma informaçao de origem: como no caso dos mobaios. eu tenho que deixar truee
-       
-       if(await !allowedOrigens.includes(origin)){ // caso a origen nao esteja cadastrado dentro do array allowedorigens, sera bloqueada
-        allowed = false
-       }
-     //  console.log(origin)
-          callback(null, allowed)
 
-    }
+origin: function(origin, callback){
 
-        }))
+if(allowedOrigens.indexOf(origin !== -1 )){
+
+  callback(null, true )
+
+}else{
+  callback( new Error('erro ao tencar linkar serv'))
+}
+
+
+}
+
+}))
 
 app.get("/:id?",router)
 app.post("/",router)

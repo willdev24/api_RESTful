@@ -5,7 +5,7 @@ const shema =  mongoose.Schema({
     idade:Number,
 })
 
-const model = mongoose.model("cadastrados",shema)
+const model = mongoose.model("cadastros",shema)
 
 module.exports ={ 
     model
