@@ -33,10 +33,7 @@ if(allowedOrigens.indexOf(origin !== -1 || !origin)){
 
 }else{
   callback( new Error('erro ao tencar linkar serv'))
-}
-
-}
-
+}}
 }))
 */
 
