@@ -17,19 +17,16 @@ const get = async (req,res)=>{
 }
 
 const post = async (req,res)=>{
-
-   
-    const {nome,idade}= req.body
-    console.log(nome)
+ 
+    const {nome,idade} = req.body
     const dados = await new model({
     nome,
     idade,
     
     })
-    
-
+    dados.save() 
     res.send("cadastro realizado")
-    dados.save()    
+       
 };
 
 
